@@ -1,10 +1,12 @@
+import styled, { ThemeProvider } from "styled-components";
+import theme, { mainBgColor } from "../style/theme";
 import React, { PropsWithChildren } from "react";
-import Head from "next/head";
-import styled from "styled-components";
+import { title } from "../data/site";
 import Header from "./Header";
+import Head from "next/head";
 
 const BodyDiv = styled.div`
-	background: white;
+	background: ${mainBgColor};
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
@@ -15,22 +17,17 @@ const Content = styled.div`
 	flex-grow: 1;
 `;
 
-const Layout = ({
-	children,
-	title,
-}: PropsWithChildren<{
-	title: string;
-}>) => {
+const Layout = ({ children }: PropsWithChildren<{}>) => {
 	return (
-		<>
+		<ThemeProvider theme={theme}>
 			<Head>
-				<title>{title} | Okto Pricing</title>
+				<title>{title}</title>
 			</Head>
 			<BodyDiv>
 				<Header />
 				<Content>{children}</Content>
 			</BodyDiv>
-		</>
+		</ThemeProvider>
 	);
 };
 

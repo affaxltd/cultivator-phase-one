@@ -1,16 +1,21 @@
-import Link from "next/link";
+import styled from "styled-components";
+import Calculator from "../components/Calculator/";
 import Container from "../components/Container";
+import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 
+const Content = styled.div`
+	width: 100%;
+	margin-top: 3rem;
+`;
+
 const IndexPage = () => (
-	<Layout title="Home">
+	<Layout>
 		<Container>
-			<h1>Hello Next.js 👋</h1>
-			<p>
-				<Link href="/about">
-					<a>About</a>
-				</Link>
-			</p>
+			<Content>
+				<Hero />
+				<Calculator />
+			</Content>
 		</Container>
 	</Layout>
 );

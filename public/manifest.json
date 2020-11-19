@@ -1,0 +1,16 @@
+{
+	"name": "Cultivator Finance",
+	"short_name": "Cultivator",
+	"icons": [
+		{
+			"src": "/images/logo/logo.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#256EFF",
+	"background_color": "#141A1E",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait"
+}
