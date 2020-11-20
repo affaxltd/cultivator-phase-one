@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import Card from "../Card";
-import Days from "./Days";
+import Days from "./Time";
 import Investment from "./Investment";
 import Result from "./Result";
 import useSWR from "swr";
@@ -18,7 +18,7 @@ const Section = styled.section`
 const Calculator = () => {
 	const [selectedAsset, setSelectedAsset] = useState(0);
 	const [investment, setInvestment] = useState("");
-	const [days, setDays] = useState(30);
+	const [days, setDays] = useState(24);
 	const { data } = useSWR<HarvestRequest>(apiUrl("/data"), fetcher);
 
 	return (
@@ -35,7 +35,7 @@ const Calculator = () => {
 						<Result
 							investment={investment}
 							pool={data.pools[selectedAsset]}
-							days={days}
+							weeks={days}
 						/>
 					</Card>
 				)}

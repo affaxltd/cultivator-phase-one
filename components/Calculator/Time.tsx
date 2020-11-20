@@ -68,8 +68,8 @@ const Slider = styled.input<SliderProps>`
 	}
 `;
 
-const min = 7;
-const max = 1461;
+const min = 1;
+const max = 208;
 
 const Days = ({
 	state: [value, setValue],
@@ -81,7 +81,7 @@ const Days = ({
 	return (
 		<Profit>
 			<Investment>
-				{value} <Span color="fadeoutTextColor">Days</Span>
+				{value} <Span color="fadeoutTextColor">Weeks</Span>
 			</Investment>
 			<SliderHolder>
 				<Slider

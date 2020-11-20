@@ -40,7 +40,7 @@ const Header = () => {
 					Cultivator
 					<LogoWrapper>
 						<Vertical>
-							<Logo src="/images/logo/logo.png" alt=":tractor:" />
+							<Logo src="/images/logo/logo.png" alt="👩‍🌾" />
 						</Vertical>
 					</LogoWrapper>
 				</Title>
