@@ -1,4 +1,4 @@
-import { Dispatch, MutableRefObject, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Search, X } from "react-feather";
 import styled from "styled-components";
 import { useChangeString } from "../../hooks/input";
@@ -11,6 +11,10 @@ import { radius } from "../../style/variables";
 import Horizontal from "../Horizontal";
 import { P } from "../Text";
 import Vertical from "../Vertical";
+
+interface ButtonProps {
+	textColor?: string;
+}
 
 const ListWrapper = styled.div`
 	position: fixed;
@@ -104,7 +108,7 @@ const SearchIcon = styled.div`
 	flex-grow: 0;
 `;
 
-const Button = styled.button`
+const Button = styled.button<ButtonProps>`
 	width: 100%;
 	cursor: pointer;
 	display: inline-flex;

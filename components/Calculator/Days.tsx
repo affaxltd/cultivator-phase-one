@@ -4,6 +4,10 @@ import { useChangeInt } from "../../hooks/input";
 import { primaryColor } from "../../style/theme";
 import { P, Span } from "../Text";
 
+interface SliderProps {
+	slideVal: number;
+}
+
 const Profit = styled.div`
 	width: 100%;
 	margin-top: 1.5rem;
@@ -18,7 +22,7 @@ const Investment = styled(P)`
 	font-size: 1.25rem;
 `;
 
-const Slider = styled.input`
+const Slider = styled.input<SliderProps>`
 	background: transparent;
 	-webkit-appearance: none;
 	width: 100%;
