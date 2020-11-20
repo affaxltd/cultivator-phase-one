@@ -3,7 +3,7 @@ interface Env {
 }
 
 const prodEnv: Env = {
-	API_ENDPOINT: "http://api.cultivator.finance",
+	API_ENDPOINT: "/api",
 };
 
 const devEnv: Env = {
