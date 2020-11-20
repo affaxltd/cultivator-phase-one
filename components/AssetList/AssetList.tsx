@@ -1,16 +1,17 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 import { Search, X } from "react-feather";
 import styled from "styled-components";
 import { useChangeString } from "../../hooks/input";
-import { Pool } from "../../interfaces/harvest";
 import { cleanName } from "../../lib/pool";
+import { CalculatorContext } from "../../state/calculator";
+import { HarvestContext } from "../../state/harvest";
 import { customColor, customColorText } from "../../style/color";
 import { shadowMd } from "../../style/shadow";
 import { secondaryBgColor, textColor } from "../../style/theme";
 import { radius } from "../../style/variables";
-import Horizontal from "../Horizontal";
-import { P } from "../Text";
-import Vertical from "../Vertical";
+import Horizontal from "../Base/Horizontal";
+import { P } from "../Base/Text";
+import Vertical from "../Base/Vertical";
 
 interface ButtonProps {
 	textColor?: string;
@@ -207,16 +208,11 @@ const APYText = styled(PoolText)`
 	text-align: right;
 `;
 
-const AssetList = ({
-	pools,
-	close,
-	setIndex,
-}: {
-	pools: Pool[];
-	close: Dispatch<SetStateAction<boolean>>;
-	setIndex: Dispatch<SetStateAction<number>>;
-}) => {
+const AssetList = ({ close }: { close: Dispatch<SetStateAction<boolean>> }) => {
 	const [search, setSearch] = useState("");
+	const { pools } = useContext(HarvestContext);
+	const state = useContext(CalculatorContext);
+	const { setState } = state;
 
 	const filteredPools = pools
 		.filter((pool) =>
@@ -280,7 +276,10 @@ const AssetList = ({
 									if (parseFloat(pool.apr) < 0.0001) return;
 
 									close(false);
-									setIndex(pools.indexOf(pool));
+									setState({
+										...state,
+										pool: pools.indexOf(pool),
+									});
 								}}
 							>
 								<Vertical>

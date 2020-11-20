@@ -2,14 +2,14 @@ import { radius } from "../../style/variables";
 import { textColor } from "../../style/theme";
 import styled from "styled-components";
 import Cleave from "cleave.js/react";
-import { P } from "../Text";
-import { Dispatch, SetStateAction, useState } from "react";
-import { useChangeString } from "../../hooks/input";
+import { P } from "../Base/Text";
+import { useContext, useState } from "react";
 import { customColor } from "../../style/color";
-import AssetList from "./AssetList";
-import { Pool } from "../../interfaces/harvest";
+import AssetList from "../AssetList/AssetList";
 import { animated, useTransition } from "react-spring";
 import { cleanName } from "../../lib/pool";
+import { HarvestContext } from "../../state/harvest";
+import { CalculatorContext } from "../../state/calculator";
 
 const Asset = styled.div`
 	display: flex;
@@ -67,16 +67,12 @@ const Animated = styled(animated.div)`
 	transition: none;
 `;
 
-const Investment = ({
-	state: [value, setValue],
-	poolState: [index, setIndex],
-	pools,
-}: {
-	state: [string, Dispatch<SetStateAction<string>>];
-	poolState: [number, Dispatch<SetStateAction<number>>];
-	pools: Pool[];
-}) => {
-	const color = value === "" ? "fadeoutTextColor" : "textColor";
+const Investment = () => {
+	const state = useContext(CalculatorContext);
+	const { investment, pool, setState } = state;
+	const { pools } = useContext(HarvestContext);
+
+	const color = investment === "" ? "fadeoutTextColor" : "textColor";
 	const [listOpen, setListOpen] = useState(false);
 
 	const transitions = useTransition(listOpen, null, {
@@ -94,11 +90,7 @@ const Investment = ({
 				({ item, key, props }) =>
 					item && (
 						<Animated key={key} style={props}>
-							<AssetList
-								setIndex={setIndex}
-								close={setListOpen}
-								pools={pools}
-							/>
+							<AssetList close={setListOpen} />
 						</Animated>
 					)
 			)}
@@ -112,7 +104,12 @@ const Investment = ({
 						numeral: true,
 						numeralThousandsGroupStyle: "none",
 					}}
-					onChange={useChangeString(setValue)}
+					onChange={(e) => {
+						setState({
+							...state,
+							investment: e.target.value,
+						});
+					}}
 				/>
 			</Asset>
 
@@ -123,10 +120,10 @@ const Investment = ({
 					}}
 				>
 					<AssetImage
-						src={pools[index].logo.replace(".svg", ".png")}
+						src={pools[pool].logo.replace(".svg", ".png")}
 						height="16"
 					/>{" "}
-					{cleanName(pools[index].name)} Pool
+					{cleanName(pools[pool].name)} Pool
 				</AssetButton>
 			</AssetWrapper>
 		</section>

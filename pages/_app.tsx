@@ -1,6 +1,9 @@
-import { AppProps } from "next/app";
+import HarvestProvider from "../components/Providers/HarvestProvider";
 import { createGlobalStyle } from "styled-components";
+import { AppProps } from "next/app";
 import { useEffect } from "react";
+
+import "isomorphic-fetch";
 import "../css/font.css";
 
 const GlobalStyles = createGlobalStyle`
@@ -20,10 +23,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 	});
 
 	return (
-		<>
+		<HarvestProvider>
 			<GlobalStyles />
 			<Component {...pageProps} />
-		</>
+		</HarvestProvider>
 	);
 };
 

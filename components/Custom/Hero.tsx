@@ -1,13 +1,17 @@
-import { H1 } from "../components/Text";
-import Link from "../components/Link";
+import { H1 } from "../Base/Text";
+import Link from "../Base/Link";
 import styled from "styled-components";
+
+const HeroSection = styled.section`
+	margin-bottom: 4rem;
+`;
 
 const Title = styled(H1)`
 	text-align: center;
 `;
 
 const Hero = () => (
-	<section id="hero">
+	<HeroSection id="hero">
 		<Title>
 			Calculate your profits for{" "}
 			<Link
@@ -19,7 +23,7 @@ const Hero = () => (
 			</Link>
 			!
 		</Title>
-	</section>
+	</HeroSection>
 );
 
 export default Hero;

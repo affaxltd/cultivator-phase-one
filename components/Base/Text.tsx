@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { customColor } from "../style/color";
+import { customColor } from "../../style/color";
 
 export const P = styled.p`
 	color: ${customColor};

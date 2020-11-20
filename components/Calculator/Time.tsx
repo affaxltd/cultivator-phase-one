@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import { useChangeInt } from "../../hooks/input";
+import { CalculatorContext } from "../../state/calculator";
 import { primaryColor } from "../../style/theme";
-import { P, Span } from "../Text";
+import { P, Span } from "../Base/Text";
 
 interface SliderProps {
 	slideVal: number;
@@ -71,25 +71,29 @@ const Slider = styled.input<SliderProps>`
 const min = 1;
 const max = 208;
 
-const Days = ({
-	state: [value, setValue],
-}: {
-	state: [number, Dispatch<SetStateAction<number>>];
-}) => {
-	const val = Math.max(0.00001, (value - min) / (max - min));
+const Days = () => {
+	const state = useContext(CalculatorContext);
+	const { weeks, setState } = state;
+
+	const val = Math.max(0.00001, (weeks - min) / (max - min));
 
 	return (
 		<Profit>
 			<Investment>
-				{value} <Span color="fadeoutTextColor">Weeks</Span>
+				{weeks} <Span color="fadeoutTextColor">Weeks</Span>
 			</Investment>
 			<SliderHolder>
 				<Slider
 					type="range"
 					min={min}
 					max={max}
-					value={value}
-					onChange={useChangeInt(setValue)}
+					value={weeks}
+					onChange={(e) => {
+						setState({
+							...state,
+							weeks: parseInt(e.target.value) || 0,
+						});
+					}}
 					slideVal={val}
 				/>
 			</SliderHolder>

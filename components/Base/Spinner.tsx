@@ -1,5 +1,5 @@
 import { ThemeContext } from "styled-components";
-import { Theme } from "../style/style";
+import { Theme } from "../../style/style";
 import { useContext } from "react";
 import Loader from "react-spinners/PulseLoader";
 

@@ -6,7 +6,7 @@ import Document, {
 	NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import HeadTags from "../components/HeadTags";
+import HeadTags from "../components/Custom/HeadTags";
 
 export default class MyDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {

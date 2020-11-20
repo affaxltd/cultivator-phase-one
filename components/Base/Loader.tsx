@@ -43,7 +43,9 @@ const Loader = ({
 
 	return (
 		<LoaderWrapper>
-			<animated.div style={springs[0]}>{children}</animated.div>
+			{visible && (
+				<animated.div style={springs[0]}>{children}</animated.div>
+			)}
 			<SpinnerWrapper style={springs[1]}>
 				<SpinnerHolder>
 					<Spinner />

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { green, mainBgColor, primaryColor, textColor } from "../../style/theme";
-import { P } from "../Text";
-import { Pool } from "../../interfaces/harvest";
-import { useState } from "react";
+import { P } from "../Base/Text";
+import { useContext, useState } from "react";
 import { calculateProfit } from "../../lib/math";
+import { HarvestContext } from "../../state/harvest";
+import { CalculatorContext } from "../../state/calculator";
 
 interface ToggleProps {
 	enabled: boolean;
@@ -36,6 +37,7 @@ const Money = styled(P)`
 `;
 
 const ToggleHolder = styled.div`
+	pointer-events: none;
 	position: absolute;
 	top: 1rem;
 	left: 1rem;
@@ -44,6 +46,7 @@ const ToggleHolder = styled.div`
 `;
 
 const Toggle = styled.div`
+	pointer-events: all;
 	cursor: pointer;
 	display: flex;
 	margin-left: auto;
@@ -76,18 +79,12 @@ const RightToggle = styled(ToggleButton)`
 	margin-left: 0.25rem;
 `;
 
-const Result = ({
-	investment,
-	pool,
-	weeks,
-}: {
-	investment: string;
-	pool: Pool;
-	weeks: number;
-}) => {
+const Result = () => {
 	const [apr, setApr] = useState(true);
+	const { pools } = useContext(HarvestContext);
+	const { pool, investment, weeks } = useContext(CalculatorContext);
 
-	const weeklyApr = (parseFloat(pool.apr) / 365) * 7;
+	const weeklyApr = (parseFloat(pools[pool].apr) / 365) * 7;
 	const money = investment === "" ? 0 : parseFloat(investment);
 	const earnedMoney = apr
 		? weeklyApr * weeks * money

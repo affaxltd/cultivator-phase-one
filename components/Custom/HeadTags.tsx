@@ -1,5 +1,5 @@
-import { banner, description, logo, title, url } from "../data/site";
-import theme from "../style/theme";
+import { banner, description, logo, title, url } from "../../data/site";
+import theme from "../../style/theme";
 
 const HeadTags = () => (
 	<>
