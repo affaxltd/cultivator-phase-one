@@ -57,6 +57,7 @@ const AssetButton = styled.button`
 `;
 
 const InvestmentText = styled(P)`
+	margin-top: 1.25rem;
 	font-size: 1.5rem;
 `;
 
@@ -97,6 +98,7 @@ const Investment = () => {
 			)}
 
 			<InvestmentText>Investment</InvestmentText>
+
 			<Asset>
 				<Dollar color={color}>{currencies.get(currency)}</Dollar>
 				<Input

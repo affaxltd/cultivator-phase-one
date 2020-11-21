@@ -4,7 +4,7 @@ import { shadowMd } from "../../style/shadow";
 import { secondaryBgColor } from "../../style/theme";
 
 interface ContentProps {
-	overflow: boolean;
+	overflow: string;
 }
 
 const Wrapper = styled.div`
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div<ContentProps>`
 	padding: 2rem;
-	overflow-x: ${(props) => (props.overflow ? "auto" : "inherit")};
+	overflow-x: ${(props) => (props.overflow === "true" ? "auto" : "inherit")};
 `;
 
 const Card = ({
@@ -26,7 +26,7 @@ const Card = ({
 	overflow?: boolean;
 }>) => (
 	<Wrapper>
-		<Content overflow={overflow}>{children}</Content>
+		<Content overflow={`${overflow}`}>{children}</Content>
 	</Wrapper>
 );
 

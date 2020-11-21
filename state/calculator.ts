@@ -15,6 +15,6 @@ export const CalculatorContext = createContext<CompleteCalculatorState>({
 	investment: "",
 	pool: 0,
 	weeks: 26,
-	currency: "usd",
+	currency: "usd/cad",
 	setState: () => {},
 });

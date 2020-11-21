@@ -1,11 +1,12 @@
 import { Currency } from "../types/money";
 
 export const currencies = new Map<Currency, string>([
-	["usd", "$"],
-	["cad", "$"],
+	["usd/cad", "$"],
 	["eur", "€"],
 	["yen", "¥"],
 	["gbp", "£"],
+	["eth", "💎"],
+	["farm", "🚜"],
 ]);
 
 export const calculateProfit = (money: number, apr: number, weeks: number) =>

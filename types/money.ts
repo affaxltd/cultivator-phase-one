@@ -1,1 +1,1 @@
-export type Currency = "usd" | "eur" | "cad" | "yen" | "gbp";
+export type Currency = "usd/cad" | "eur" | "yen" | "gbp" | "eth" | "farm";

@@ -6,21 +6,25 @@ import { primaryColor, secondaryBgColor, textColor } from "../../style/theme";
 import { Currency } from "../../types/money";
 
 interface ButtonProps {
-	enabled: boolean;
+	enabled: string;
 }
 
 const CurrencyHolder = styled.div`
-	flex-direction: row-reverse;
+	flex-direction: row;
 	display: flex;
+	justify-content: center;
 	width: 100%;
 	flex-wrap: wrap;
 `;
 
 const CurrencyButton = styled.button<ButtonProps>`
 	cursor: pointer;
-	color: ${(props) => (props.enabled ? "white" : textColor(props))};
+	color: ${(props) =>
+		props.enabled === "true" ? "white" : textColor(props)};
 	background: ${(props) =>
-		props.enabled ? primaryColor(props) : secondaryBgColor(props)};
+		props.enabled === "true"
+			? primaryColor(props)
+			: secondaryBgColor(props)};
 	border: 1px solid ${primaryColor};
 	margin: 0.125rem;
 	padding: 0.25rem 0.35rem;
@@ -46,7 +50,8 @@ const Currencies = () => {
 		<CurrencyHolder>
 			{Array.from(currencies.entries()).map(([c, mark]) => (
 				<CurrencyButton
-					enabled={c === currency}
+					key={c}
+					enabled={`${c === currency}`}
 					onClick={() => {
 						localStorage.setItem("currency", c);
 
