@@ -285,6 +285,7 @@ const AssetList = ({ close }: { close: Dispatch<SetStateAction<boolean>> }) => {
 								<Vertical>
 									<PoolImage
 										src={pool.logo.replace(".svg", ".png")}
+										alt=":logo:"
 									/>
 								</Vertical>
 

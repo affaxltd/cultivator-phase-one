@@ -22,6 +22,6 @@ export const customColorText = (
 export const colors: Colors = {
 	transparent: "transparent",
 	white: "#ffffff",
-	green: "#31c48d",
+	green: "#29E054",
 	red: "#e02424",
 };

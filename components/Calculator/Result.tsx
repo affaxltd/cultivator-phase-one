@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { green, mainBgColor, primaryColor, textColor } from "../../style/theme";
+import { green, mainBgColor, brandColor, textColor } from "../../style/theme";
 import { P } from "../Base/Text";
 import { useContext, useState } from "react";
 import { calculateProfit, currencies } from "../../lib/money";
@@ -12,7 +12,7 @@ interface ToggleProps {
 
 const Results = styled.div`
 	position: relative;
-	background: ${primaryColor}59;
+	background: ${brandColor}59;
 	padding: 1.5rem;
 	margin-top: 2rem;
 	border-radius: 1rem;
@@ -36,20 +36,10 @@ const Money = styled(P)`
 	display: flex;
 `;
 
-const ToggleHolder = styled.div`
-	pointer-events: none;
-	position: absolute;
-	top: 1rem;
-	left: 1rem;
-	right: 1rem;
-	bottom: 1rem;
-`;
-
 const Toggle = styled.div`
-	pointer-events: all;
+	margin-bottom: 0.5rem;
 	cursor: pointer;
 	display: flex;
-	margin-left: auto;
 	background: ${mainBgColor};
 	border-radius: 0.5rem;
 	padding: 0.25rem;
@@ -57,12 +47,13 @@ const Toggle = styled.div`
 `;
 
 const ToggleButton = styled.button<ToggleProps>`
+	user-select: none;
 	cursor: pointer;
 	font-size: 0.75rem;
 	padding: 0.25rem;
 	border: none;
 	background: ${(props) =>
-		props.enabled ? primaryColor(props) : mainBgColor(props)};
+		props.enabled ? brandColor(props) : mainBgColor(props)};
 	opacity: 50;
 	border-radius: 0.5rem;
 	color: ${textColor};
@@ -93,16 +84,14 @@ const Result = () => {
 
 	return (
 		<Results>
-			<ToggleHolder>
-				<Toggle
-					onClick={() => {
-						setApr(!apr);
-					}}
-				>
-					<ToggleButton enabled={apr}>APR</ToggleButton>
-					<RightToggle enabled={!apr}>Compounding</RightToggle>
-				</Toggle>
-			</ToggleHolder>
+			<Toggle
+				onClick={() => {
+					setApr(!apr);
+				}}
+			>
+				<ToggleButton enabled={apr}>APR</ToggleButton>
+				<RightToggle enabled={!apr}>Compounding</RightToggle>
+			</Toggle>
 			<Title>Estimated Profits:</Title>
 			<Yield>+{percent.toFixed(2)}%</Yield>
 			<Money>

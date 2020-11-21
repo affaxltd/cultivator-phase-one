@@ -10,10 +10,10 @@ const HeadTags = () => (
 		<meta name="description" content={description} />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="mobile-web-app-capable" content="yes" />
-		<meta name="msapplication-TileColor" content={theme.primaryColor} />
+		<meta name="msapplication-TileColor" content={theme.brandColor} />
 		<meta name="msapplication-tap-highlight" content="no" />
 
-		<meta name="theme-color" content={theme.primaryColor} />
+		<meta name="theme-color" content={theme.brandColor} />
 		<link rel="apple-touch-icon" sizes="512x512" href={logo} />
 		<link rel="icon" type="image/png" sizes="512x512" href={logo} />
 		<link rel="manifest" href="/manifest.json" />

@@ -7,7 +7,7 @@ import Card from "../Base/Card";
 import numeral from "numeral";
 import { textColor } from "../../style/theme";
 import Vertical from "../Base/Vertical";
-import { H3, P } from "../Base/Text";
+import { H2, P } from "../Base/Text";
 import { Pool } from "../../types/harvest";
 import SortArrow from "../AssetList/SortArrow";
 
@@ -49,7 +49,8 @@ const ChevronHolder = styled.div`
 	margin: 0 0.5rem;
 `;
 
-const Title = styled(H3)`
+const Title = styled(H2)`
+	font-weight: 700;
 	font-size: 2rem;
 	text-align: center;
 	margin-bottom: 3rem;
@@ -145,6 +146,7 @@ const PoolList = () => {
 													".svg",
 													".png"
 												)}
+												alt=":logo:"
 											/>
 											<div>
 												<Vertical>

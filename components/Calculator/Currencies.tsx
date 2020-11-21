@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { currencies } from "../../lib/money";
 import { CalculatorContext } from "../../state/calculator";
-import { primaryColor, secondaryBgColor, textColor } from "../../style/theme";
+import { brandColor, secondaryBgColor, textColor } from "../../style/theme";
 import { Currency } from "../../types/money";
 
 interface ButtonProps {
@@ -22,10 +22,8 @@ const CurrencyButton = styled.button<ButtonProps>`
 	color: ${(props) =>
 		props.enabled === "true" ? "white" : textColor(props)};
 	background: ${(props) =>
-		props.enabled === "true"
-			? primaryColor(props)
-			: secondaryBgColor(props)};
-	border: 1px solid ${primaryColor};
+		props.enabled === "true" ? brandColor(props) : secondaryBgColor(props)};
+	border: 1px solid ${brandColor};
 	margin: 0.125rem;
 	padding: 0.25rem 0.35rem;
 	border-radius: 0.25rem;

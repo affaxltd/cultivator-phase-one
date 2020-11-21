@@ -5,7 +5,8 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"lint": "tsc"
+		"lint": "tsc",
+		"pwa": "yarn build && yarn start"
 	},
 	"dependencies": {
 		"@tailwindcss/ui": "^0.7.2",

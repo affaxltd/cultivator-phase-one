@@ -1,7 +1,6 @@
 import HarvestProvider from "../components/Providers/HarvestProvider";
 import { createGlobalStyle } from "styled-components";
 import { AppProps } from "next/app";
-import { useEffect } from "react";
 
 import "isomorphic-fetch";
 import "../css/font.css";
@@ -17,17 +16,11 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-	useEffect(() => {
-		document.documentElement.lang = "en";
-	});
-
-	return (
-		<HarvestProvider>
-			<GlobalStyles />
-			<Component {...pageProps} />
-		</HarvestProvider>
-	);
-};
+const MyApp = ({ Component, pageProps }: AppProps) => (
+	<HarvestProvider>
+		<GlobalStyles />
+		<Component {...pageProps} />
+	</HarvestProvider>
+);
 
 export default MyApp;

@@ -7,8 +7,9 @@ const theme: Theme = {
 	secondaryBgColor: "#202937",
 	textColor: "#FFFFFF",
 	inverseTextColor: "#111118",
-	fadeoutTextColor: "#757575",
-	primaryColor: "#3E7EFF",
+	fadeoutTextColor: "#CCCCCC",
+	brandColor: "#574AE2",
+	lightBrandColor: "#7C73E8",
 };
 
 export default theme;
@@ -21,7 +22,9 @@ export const inverseTextColor: StyleFunction = (props) =>
 	props.theme.inverseTextColor;
 export const fadeoutTextColor: StyleFunction = (props) =>
 	props.theme.fadeoutTextColor;
-export const primaryColor: StyleFunction = (props) => props.theme.primaryColor;
+export const brandColor: StyleFunction = (props) => props.theme.brandColor;
+export const lightBrandColor: StyleFunction = (props) =>
+	props.theme.lightBrandColor;
 export const transparent: StyleFunction = (props) => props.theme.transparent;
 export const white: StyleFunction = (props) => props.theme.white;
 export const green: StyleFunction = (props) => props.theme.green;

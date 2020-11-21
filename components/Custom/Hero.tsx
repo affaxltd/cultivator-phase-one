@@ -15,9 +15,10 @@ const Hero = () => (
 		<Title>
 			Calculate your profits for{" "}
 			<Link
-				color="primaryColor"
+				color="lightBrandColor"
 				href="https://harvest.finance/"
 				target="_blank"
+				rel="noreferrer"
 			>
 				Harvest
 			</Link>

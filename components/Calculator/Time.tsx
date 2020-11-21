@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { CalculatorContext } from "../../state/calculator";
-import { primaryColor } from "../../style/theme";
+import { brandColor } from "../../style/theme";
 import { P, Span } from "../Base/Text";
 
 interface SliderProps {
@@ -34,7 +34,7 @@ const Slider = styled.input<SliderProps>`
 		linear,
 		left top,
 		right top,
-		color-stop(${(props: any) => props.slideVal || ""}, ${primaryColor}59),
+		color-stop(${(props: any) => props.slideVal || ""}, ${brandColor}59),
 		color-stop(
 			${(props: any) => props.slideVal || ""},
 			rgba(255, 255, 255, 0.1)
@@ -47,7 +47,7 @@ const Slider = styled.input<SliderProps>`
 		border-radius: 999999px;
 		width: 1.25rem;
 		height: 1.25rem;
-		background: ${primaryColor};
+		background: ${brandColor};
 		cursor: pointer;
 	}
 
@@ -55,7 +55,7 @@ const Slider = styled.input<SliderProps>`
 		border-radius: 999999px;
 		width: 1.25rem;
 		height: 1.25rem;
-		background: ${primaryColor};
+		background: ${brandColor};
 		cursor: pointer;
 	}
 
@@ -85,6 +85,7 @@ const Days = () => {
 			<SliderHolder>
 				<Slider
 					type="range"
+					aria-label="days"
 					min={min}
 					max={max}
 					value={weeks}

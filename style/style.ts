@@ -13,7 +13,8 @@ export interface Theme extends Colors {
 	textColor: string;
 	inverseTextColor: string;
 	fadeoutTextColor: string;
-	primaryColor: string;
+	brandColor: string;
+	lightBrandColor: string;
 }
 
 export interface StyleFunction {

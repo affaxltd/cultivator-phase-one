@@ -102,6 +102,7 @@ const Investment = () => {
 			<Asset>
 				<Dollar color={color}>{currencies.get(currency)}</Dollar>
 				<Input
+					aria-label="investment"
 					placeholder="0.00"
 					options={{
 						numeral: true,
@@ -125,6 +126,7 @@ const Investment = () => {
 					<AssetImage
 						src={pools[pool].logo.replace(".svg", ".png")}
 						height="16"
+						alt=":logo:"
 					/>{" "}
 					{cleanName(pools[pool].name)} Pool
 				</AssetButton>
