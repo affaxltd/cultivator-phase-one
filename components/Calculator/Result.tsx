@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { green, mainBgColor, primaryColor, textColor } from "../../style/theme";
 import { P } from "../Base/Text";
 import { useContext, useState } from "react";
-import { calculateProfit } from "../../lib/math";
+import { calculateProfit, currencies } from "../../lib/money";
 import { HarvestContext } from "../../state/harvest";
 import { CalculatorContext } from "../../state/calculator";
 
@@ -53,7 +53,7 @@ const Toggle = styled.div`
 	background: ${mainBgColor};
 	border-radius: 0.5rem;
 	padding: 0.25rem;
-	width: 4.15rem;
+	width: 7.65rem;
 `;
 
 const ToggleButton = styled.button<ToggleProps>`
@@ -82,7 +82,7 @@ const RightToggle = styled(ToggleButton)`
 const Result = () => {
 	const [apr, setApr] = useState(true);
 	const { pools } = useContext(HarvestContext);
-	const { pool, investment, weeks } = useContext(CalculatorContext);
+	const { pool, investment, weeks, currency } = useContext(CalculatorContext);
 
 	const weeklyApr = (parseFloat(pools[pool].apr) / 365) * 7;
 	const money = investment === "" ? 0 : parseFloat(investment);
@@ -100,12 +100,15 @@ const Result = () => {
 					}}
 				>
 					<ToggleButton enabled={apr}>APR</ToggleButton>
-					<RightToggle enabled={!apr}>APY</RightToggle>
+					<RightToggle enabled={!apr}>Compounding</RightToggle>
 				</Toggle>
 			</ToggleHolder>
 			<Title>Estimated Profits:</Title>
 			<Yield>+{percent.toFixed(2)}%</Yield>
-			<Money>${earnedMoney.toFixed(2)}</Money>
+			<Money>
+				{currencies.get(currency)}
+				{earnedMoney.toFixed(2)}
+			</Money>
 		</Results>
 	);
 };

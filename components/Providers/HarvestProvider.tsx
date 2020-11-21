@@ -3,6 +3,7 @@ import { HarvestState, HarvestContext } from "../../state/harvest";
 import { HarvestRequest } from "../../types/harvest";
 import { useAsyncEffect } from "../../lib/effect";
 import { apiUrl } from "../../lib/api";
+import { apyToApr } from "../../lib/money";
 
 const HarvestProvider = ({ children }: PropsWithChildren<{}>) => {
 	const [state, setState] = useState<HarvestState>({
@@ -23,7 +24,10 @@ const HarvestProvider = ({ children }: PropsWithChildren<{}>) => {
 
 			setState({
 				loaded: true,
-				pools: data.pools,
+				pools: data.pools.map((pool) => {
+					pool.apr = apyToApr(parseFloat(pool.apr)).toString();
+					return pool;
+				}),
 			});
 		}),
 		[]

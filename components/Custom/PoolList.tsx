@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-import { aprToApy } from "../../lib/math";
+import { aprToApy } from "../../lib/money";
 import { cleanName } from "../../lib/pool";
 import { HarvestContext } from "../../state/harvest";
 import Card from "../Base/Card";

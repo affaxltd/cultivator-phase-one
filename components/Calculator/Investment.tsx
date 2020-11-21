@@ -10,6 +10,7 @@ import { animated, useTransition } from "react-spring";
 import { cleanName } from "../../lib/pool";
 import { HarvestContext } from "../../state/harvest";
 import { CalculatorContext } from "../../state/calculator";
+import { currencies } from "../../lib/money";
 
 const Asset = styled.div`
 	display: flex;
@@ -69,7 +70,7 @@ const Animated = styled(animated.div)`
 
 const Investment = () => {
 	const state = useContext(CalculatorContext);
-	const { investment, pool, setState } = state;
+	const { investment, pool, currency, setState } = state;
 	const { pools } = useContext(HarvestContext);
 
 	const color = investment === "" ? "fadeoutTextColor" : "textColor";
@@ -97,7 +98,7 @@ const Investment = () => {
 
 			<InvestmentText>Investment</InvestmentText>
 			<Asset>
-				<Dollar color={color}>$</Dollar>
+				<Dollar color={color}>{currencies.get(currency)}</Dollar>
 				<Input
 					placeholder="0.00"
 					options={{

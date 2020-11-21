@@ -6,6 +6,7 @@ const CalculatorProvider = ({ children }: PropsWithChildren<{}>) => {
 		investment: "",
 		pool: 0,
 		weeks: 26,
+		currency: "usd",
 	});
 
 	return (
