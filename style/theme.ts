@@ -8,8 +8,8 @@ const theme: Theme = {
 	textColor: "#FFFFFF",
 	inverseTextColor: "#111118",
 	fadeoutTextColor: "#CCCCCC",
-	brandColor: "#574AE2",
-	lightBrandColor: "#7C73E8",
+	brandColor: "#256EFF",
+	lightBrandColor: "#4785FF",
 };
 
 export default theme;

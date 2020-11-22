@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div<ContentProps>`
 	padding: 2rem;
-	overflow-x: ${(props) => (props.overflow === "true" ? "auto" : "inherit")};
+	overflow-x: ${(props) => (props.overflow === "true" ? "auto" : "hidden")};
 `;
 
 const Card = ({

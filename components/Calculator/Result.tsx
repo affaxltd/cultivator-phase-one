@@ -5,6 +5,8 @@ import { useContext, useState } from "react";
 import { calculateProfit, currencies } from "../../lib/money";
 import { HarvestContext } from "../../state/harvest";
 import { CalculatorContext } from "../../state/calculator";
+import ParentSize from "@visx/responsive/lib/components/ParentSize";
+import Chart from "./Chart";
 
 interface ToggleProps {
 	enabled: boolean;
@@ -16,6 +18,10 @@ const Results = styled.div`
 	padding: 1.5rem;
 	margin-top: 2rem;
 	border-radius: 1rem;
+	overflow-x: visible;
+`;
+
+const ResultHolder = styled.div`
 	overflow-x: auto;
 `;
 
@@ -66,6 +72,17 @@ const ToggleButton = styled.button<ToggleProps>`
 	}
 `;
 
+const ChartTitle = styled(P)`
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+`;
+
+const ChartHolder = styled.div`
+	width: 100%;
+	height: 12rem;
+`;
+
 const RightToggle = styled(ToggleButton)`
 	margin-left: 0.25rem;
 `;
@@ -82,23 +99,47 @@ const Result = () => {
 		: calculateProfit(money, weeklyApr, weeks);
 	const percent = (earnedMoney / money) * 100 || 0;
 
+	const profit = Array.from(Array(weeks).keys()).map((week) => ({
+		week: week + 1,
+		profit: apr
+			? money * weeklyApr * (week + 1)
+			: calculateProfit(money, weeklyApr, week + 1),
+	}));
+
+	const ProfitChart = Chart({
+		profit,
+	});
+
 	return (
-		<Results>
-			<Toggle
-				onClick={() => {
-					setApr(!apr);
-				}}
-			>
-				<ToggleButton enabled={apr}>APR</ToggleButton>
-				<RightToggle enabled={!apr}>Compounding</RightToggle>
-			</Toggle>
-			<Title>Estimated Profits:</Title>
-			<Yield>+{percent.toFixed(2)}%</Yield>
-			<Money>
-				{currencies.get(currency)}
-				{earnedMoney.toFixed(2)}
-			</Money>
-		</Results>
+		<>
+			<Results>
+				<ResultHolder>
+					<Toggle
+						onClick={() => {
+							setApr(!apr);
+						}}
+					>
+						<ToggleButton enabled={apr}>APR</ToggleButton>
+						<RightToggle enabled={!apr}>Compounding</RightToggle>
+					</Toggle>
+					<Title>Estimated Profits:</Title>
+					<Yield>+{percent.toFixed(2)}%</Yield>
+					<Money>
+						{currencies.get(currency)}
+						{earnedMoney.toFixed(2)}
+					</Money>
+				</ResultHolder>
+			</Results>
+
+			<ChartTitle>Profit over weeks:</ChartTitle>
+			<ChartHolder>
+				<ParentSize>
+					{({ width, height }) => (
+						<ProfitChart width={width} height={height} />
+					)}
+				</ParentSize>
+			</ChartHolder>
+		</>
 	);
 };
 

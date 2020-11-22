@@ -68,7 +68,7 @@ const Slider = styled.input<SliderProps>`
 	}
 `;
 
-const min = 1;
+const min = 2;
 const max = 208;
 
 const Days = () => {
