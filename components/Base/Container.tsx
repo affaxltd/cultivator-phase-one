@@ -1,7 +1,6 @@
-import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-const Contain = styled.div`
+const Container = styled.div`
 	margin: 0 auto;
 	max-width: 1000px;
 	padding: 0 2rem;
@@ -10,15 +9,5 @@ const Contain = styled.div`
 		padding: 0 1rem;
 	}
 `;
-
-const Wrapper = styled.div`
-	width: 100%;
-`;
-
-const Container = ({ children }: PropsWithChildren<{}>) => (
-	<Wrapper>
-		<Contain>{children}</Contain>
-	</Wrapper>
-);
 
 export default Container;

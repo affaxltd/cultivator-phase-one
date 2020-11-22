@@ -19,7 +19,7 @@ interface ButtonProps {
 
 const ListWrapper = styled.div`
 	position: fixed;
-	z-index: 10;
+	z-index: 100;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;

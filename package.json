@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@tailwindcss/ui": "^0.7.2",
+		"@tippyjs/react": "^4.2.0",
 		"@types/numeral": "^0.0.28",
 		"@vercel/node": "^1.8.5",
 		"@visx/curve": "^1.0.0",

@@ -56,6 +56,13 @@ const Title = styled(H2)`
 	margin-bottom: 3rem;
 `;
 
+const Donations = styled(P)`
+	font-size: 1.2rem;
+	text-align: center;
+	width: 100%;
+	margin-top: 4rem;
+`;
+
 type SortFunction = (a: Pool, b: Pool) => number;
 
 const biggestApy: SortFunction = (a, b) =>
@@ -184,6 +191,10 @@ const PoolList = () => {
 					</tbody>
 				</PoolTable>
 			</Card>
+
+			<Donations>
+				Donations: 0x175023d52584a5E29e6c33e88592851359941508
+			</Donations>
 		</ListSection>
 	);
 };

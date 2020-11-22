@@ -7,6 +7,7 @@ import "isomorphic-fetch";
 import "react-notifications-component/dist/theme.css";
 import "animate.css/animate.compat.css";
 import "../css/font.css";
+import "tippy.js/dist/tippy.css";
 
 const GlobalStyles = createGlobalStyle`
   * {
