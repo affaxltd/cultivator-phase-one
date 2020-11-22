@@ -1,8 +1,11 @@
 import HarvestProvider from "../components/Providers/HarvestProvider";
+import ReactNotification from "react-notifications-component";
 import { createGlobalStyle } from "styled-components";
 import { AppProps } from "next/app";
 
 import "isomorphic-fetch";
+import "react-notifications-component/dist/theme.css";
+import "animate.css/animate.compat.css";
 import "../css/font.css";
 
 const GlobalStyles = createGlobalStyle`
@@ -18,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
 	<HarvestProvider>
+		<ReactNotification />
 		<GlobalStyles />
 		<Component {...pageProps} />
 	</HarvestProvider>

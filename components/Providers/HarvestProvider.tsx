@@ -1,9 +1,10 @@
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { HarvestState, HarvestContext } from "../../state/harvest";
+import { store } from "react-notifications-component";
 import { HarvestRequest } from "../../types/harvest";
 import { useAsyncEffect } from "../../lib/effect";
-import { apiUrl } from "../../lib/api";
 import { apyToApr } from "../../lib/money";
+import { apiUrl } from "../../lib/api";
 
 const HarvestProvider = ({ children }: PropsWithChildren<{}>) => {
 	const [state, setState] = useState<HarvestState>({
@@ -16,7 +17,20 @@ const HarvestProvider = ({ children }: PropsWithChildren<{}>) => {
 			const fetched = await fetch(apiUrl("/data"));
 
 			if (fetched.status !== 200) {
-				// TODO: Error message
+				store.addNotification({
+					title: "Error",
+					message:
+						"There was an error fetching data from the Harvest api, please try again later",
+					type: "danger",
+					dismiss: {
+						duration: 5000,
+						onScreen: true,
+					},
+					animationIn: ["animated animated", "animated fadeIn"],
+					animationOut: ["animated animated", "animated fadeOut"],
+					container: "top-center",
+					insert: "top",
+				});
 				return;
 			}
 
