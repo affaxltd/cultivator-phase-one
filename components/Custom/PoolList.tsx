@@ -61,6 +61,7 @@ const Donations = styled(P)`
 	text-align: center;
 	width: 100%;
 	margin-top: 4rem;
+	overflow-wrap: break-word;
 `;
 
 type SortFunction = (a: Pool, b: Pool) => number;
