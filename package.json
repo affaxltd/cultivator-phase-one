@@ -22,7 +22,7 @@
 		"@visx/tooltip": "^1.1.0",
 		"animate.css": "^4.1.1",
 		"autoprefixer": "^10.0.1",
-		"axios": "^0.21.0",
+		"axios": "^0.21.1",
 		"cleave.js": "^1.6.0",
 		"isomorphic-fetch": "^3.0.0",
 		"minimist": "^1.2.5",
